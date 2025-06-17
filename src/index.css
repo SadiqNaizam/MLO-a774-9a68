@@ -1,93 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 25% 98%; /* PRD: #F8F9FB */
+    --foreground: 222 39% 11%; /* PRD: #111827 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%; /* PRD: #FFFFFF (surface) */
+    --card-foreground: 222 39% 11%; /* PRD: #111827 (primaryText on surface) */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%; /* PRD: #FFFFFF (surface) */
+    --popover-foreground: 222 39% 11%; /* PRD: #111827 (primaryText on surface) */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 221 83% 53%; /* PRD: #2563EB (accent) */
+    --primary-foreground: 210 40% 98%; /* Existing light color for good contrast */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 13% 91%; /* PRD: #E5E7EB (sidebar color, used for secondary UI bg) */
+    --secondary-foreground: 222 39% 11%; /* PRD: #111827 (primaryText on secondary UI bg) */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 13% 91%; /* PRD: #E5E7EB (sidebar color, used for muted UI bg) */
+    --muted-foreground: 217 9% 46%; /* PRD: #6B7280 (secondaryText) */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 221 83% 53%; /* PRD: #2563EB (accent) */
+    --accent-foreground: 210 40% 98%; /* Existing light color for good contrast */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%; /* PRD: #EF4444 (error) */
+    --destructive-foreground: 210 40% 98%; /* Existing light color for good contrast */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 218 13% 84%; /* PRD: #D1D5DB */
+    --input: 218 13% 84%; /* PRD: #D1D5DB (input border often same as general border) */
+    --ring: 221 83% 53%; /* PRD: #2563EB (accent for focus rings) */
 
-    --radius: 0.5rem;
+    --radius: 0.5rem; /* Existing value, maps to PRD's rounded-md (0.375rem) via calc in tailwind.config */
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom variables based on PRD */
+    --font-sans: "Inter", system-ui, sans-serif; /* PRD: typography.primaryFont */
+    
+    --sidebar-background: 220 13% 91%; /* PRD: #E5E7EB (sidebar) */
+    --sidebar-foreground: 222 39% 11%; /* PRD: #111827 (primaryText on sidebar) */
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --accent-secondary-value: 33 95% 44%; /* PRD: #D97706 (accentSecondary) */
+    --success-value: 160 84% 39%; /* PRD: #10B981 (success) */
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+  /* Dark mode styles removed as not specified in PRD's designSystem */
 }
 
 @layer base {
@@ -97,5 +56,8 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
