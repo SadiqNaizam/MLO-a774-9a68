@@ -1,7 +1,8 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
-	darkMode: ["class"],
+	// darkMode: ["class"], // Removed as PRD does not specify a dark mode
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -54,20 +55,21 @@ export default {
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+					foreground: 'hsl(var(--sidebar-foreground))'
+					// Other sidebar specific theme keys (primary, accent, border, ring) removed as per PRD simplification
+				},
+        // Added custom colors from PRD
+        accentSecondary: 'hsl(var(--accent-secondary-value))',
+        success: 'hsl(var(--success-value))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				md: 'calc(var(--radius) - 2px)', // 0.5rem - 2px = 0.375rem (rounded-md)
+				sm: 'calc(var(--radius) - 4px)'  // 0.5rem - 4px = 0.25rem (rounded)
 			},
+      fontFamily: {
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
